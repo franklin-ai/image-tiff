@@ -553,8 +553,6 @@ impl<'a, W: 'a + Write + Seek, T: ColorType, K: TiffKind, D: Compression>
         let mut pin = Box::pin(stream);
         let compression = Arc::new(Mutex::new(self.compression.get_algorithm().clone()));
 
-        let n = 0;
-
         while let Some(slice_result) = pin.next().await {
             if tasks.len() == 8 {
                 for result in join_all(tasks).await {
