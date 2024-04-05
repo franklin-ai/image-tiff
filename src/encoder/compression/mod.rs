@@ -25,7 +25,6 @@ pub trait Compression: CompressionAlgorithm {
 
     /// Method to optain a type that can store each variant of comression algorithm.
     fn get_algorithm(&self) -> Compressor;
-
 }
 
 /// An enum to store each compression algorithm.

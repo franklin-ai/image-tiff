@@ -1,7 +1,7 @@
 extern crate tiff;
 
 use tiff::decoder::{ifd, Decoder, DecodingResult};
-use tiff::encoder::compression::{Deflate};
+use tiff::encoder::compression::Deflate;
 use tiff::encoder::{colortype, Ifd, Ifd8, SRational, TiffEncoder};
 use tiff::tags::Tag;
 use tiff::ColorType;
@@ -589,7 +589,6 @@ fn test_big_tiled_image_directory() {
     let tiles_x = (image_width as f64 / tile_width as f64).ceil() as u64;
     let tiles_y = (image_height as f64 / tile_height as f64).ceil() as u64;
     {
-        
         let mut img_encoder = TiffEncoder::new(&mut file).unwrap();
         let mut image = img_encoder
             .new_image_with_compression_with_type::<colortype::Gray8, Deflate>(
@@ -598,7 +597,6 @@ fn test_big_tiled_image_directory() {
                 Deflate::default(),
                 tiff::decoder::ChunkType::Tile,
                 Some((tile_width, tile_height)),
-                
             )
             .unwrap();
 
@@ -608,7 +606,7 @@ fn test_big_tiled_image_directory() {
         image.write_chunk_with_compression(&img2[..]).unwrap();
         // Not yet implemented
         // assert!(image.tile_size(5, 5).is_err());
-        
+
         for i in 1..(tiles_x * tiles_y) {
             let img2: Vec<u8> = vec![i as u8; (tile_width * tile_height) as usize];
             image.write_chunk_with_compression(&img2[..]).unwrap();
