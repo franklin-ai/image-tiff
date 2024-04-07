@@ -467,10 +467,6 @@ impl<'a, W: 'a + Write + Seek, T: ColorType, K: TiffKind, D: Compression>
             }
         }
 
-        println!("Encoder write position: {}", encoder.writer.offset());
-
-
-
         Ok(ImageEncoder {
             encoder,
             chunk_count,
