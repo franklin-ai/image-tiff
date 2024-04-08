@@ -578,7 +578,6 @@ fn test_big_tiled_image_directory() {
     // Create a test file in /tmp
     let tmp_file = tempfile::NamedTempFile::new().unwrap();
     let mut file = tmp_file.reopen().unwrap();
-    println!("Writing to file {:?}", file);
     //let mut file = Cursor::new(Vec::new());
 
     let image_width = 1000;
